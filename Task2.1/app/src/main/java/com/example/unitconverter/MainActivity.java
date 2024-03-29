@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean isInteger(String str) {
         try {
-            Integer.parseInt(str);
+            Double.parseDouble(str);
             return true;
         } catch (NumberFormatException e) {
             return false;
