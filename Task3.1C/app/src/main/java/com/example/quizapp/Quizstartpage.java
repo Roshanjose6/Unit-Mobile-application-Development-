@@ -1,6 +1,7 @@
 package com.example.quizapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -70,10 +71,10 @@ public class Quizstartpage extends AppCompatActivity {
                 // Check if the selected answer is correct
 
                 if (selectedRadioButton != null && selectedRadioButton.getText().toString().equals(correctAnswers[currentQuestionIndex])) {
-                    selectedRadioButton.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                    selectedRadioButton.setBackground(ContextCompat.getDrawable(Quizstartpage.this, R.drawable.selected_radio_button_bg_green));
                     totalScore += 2;
                 } else {
-                    selectedRadioButton.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                    selectedRadioButton.setBackground(ContextCompat.getDrawable(Quizstartpage.this, R.drawable.selected_radio_button_bg_red));
 //                        totalScore -= 2;
                 }
                 // Delay for 1 second before moving to the next question
@@ -101,7 +102,9 @@ public class Quizstartpage extends AppCompatActivity {
                 RadioButton radioButton = new RadioButton(this);
                 radioButton.setText(options[currentQuestionIndex][i]);
                 radioButton.setId(i); // Set unique ID for each RadioButton
+                radioButton.setPadding(10,10,10,10);
                 radioGroup.addView(radioButton);
+
             }
             // Update progress bar based on the number of questions completed
             int progress = (int)(((float) currentQuestionIndex / questions.length) * 100);

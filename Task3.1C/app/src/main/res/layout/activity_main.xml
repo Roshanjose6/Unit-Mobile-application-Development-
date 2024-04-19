@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#3F51B5"
     app:circularflow_defaultRadius="10dp">
 
     <EditText
@@ -17,7 +18,6 @@
         android:background="@android:drawable/edit_text"
         android:hint="Name"
         android:padding="12dp"
-        app:circularflow_radiusInDP="10dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -28,6 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="#3F51B5"
         android:text="Submit"
         app:cornerRadius="10sp"
         app:layout_constraintEnd_toEndOf="@+id/username"
