@@ -34,22 +34,31 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.02" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/Addtask"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#fc033d"
-        android:text="Add Task"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:backgroundTint="#000DFF"
+        android:src="@drawable/add_circle_svgrepo_com"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline2" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/alltaskrecycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/Addtask"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/btnSortByDueDate" />
+
+    <Button
+        android:id="@+id/btnSortByDueDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#000DFF"
+        android:onClick="sortByDueDate"
+        android:text="Sort by Date"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
