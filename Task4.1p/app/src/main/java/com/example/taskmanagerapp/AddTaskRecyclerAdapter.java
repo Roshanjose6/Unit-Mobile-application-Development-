@@ -75,20 +75,20 @@ public class AddTaskRecyclerAdapter extends RecyclerView.Adapter<AddTaskRecycler
         holder.deletebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get the task ID
+
                 String taskId = addTaskconstrsss.get(position).getId();
 
-                // Delete the task from the database
+
                 boolean isDeleted = databaseHelperclass.deleteall(taskId);
 
-                // Check if the task is deleted successfully
+
                 if (isDeleted) {
-                    // Remove the task from the list and notify the adapter
+
                     addTaskconstrsss.remove(position);
                     notifyItemRemoved(position);
                     notifyItemRangeChanged(position, addTaskconstrsss.size());
 
-                    // Optionally, show a toast message
+
                     Toast.makeText(mcontext, "Task deleted successfully", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(mcontext, "Failed to delete task", Toast.LENGTH_SHORT).show();

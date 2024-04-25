@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         addtask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAddTaskDialog(); // Call method to open the dialog box
+                openAddTaskDialog();
             }
         });
         addTaskRecyclerAdapter = new AddTaskRecyclerAdapter(getApplicationContext(), addTaskconstrs, this);
@@ -123,11 +123,11 @@ public class MainActivity extends AppCompatActivity {
 
         builder.create().show();
     }
-    // Method to refresh RecyclerView with updated data
+
     void refreshRecyclerView() {
         addTaskconstrs.clear();
 
-        // Fetch data from the database
+
         Cursor cursor = databaseHelperclass.getall();
         if (cursor != null && cursor.moveToFirst()) {
             do {
@@ -140,11 +140,10 @@ public class MainActivity extends AppCompatActivity {
             cursor.close();
         }
 
-        // Notify RecyclerView adapter about data changes
         addTaskRecyclerAdapter.notifyDataSetChanged();
     }
     public void sortByDueDate(View view) {
-        // Sort the list of tasks by due date
+
         Collections.sort(addTaskconstrs, new Comparator<AddTaskconstr>() {
             @Override
             public int compare(AddTaskconstr o1, AddTaskconstr o2) {
@@ -160,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Notify the adapter about the data changes
         addTaskRecyclerAdapter.notifyDataSetChanged();
     }
 }

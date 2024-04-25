@@ -44,22 +44,16 @@ public class Taskdetailspage extends AppCompatActivity {
             String taskDescription = intent.getStringExtra("taskDescription");
             String taskDueDate = intent.getStringExtra("taskDueDate");
 
-            // Use the data as needed
-            // For example, set the text of TextViews to display the task details
             editTaskTitle.setText(taskTitle);
             editTaskDescription.setText(taskDescription);
             editTaskDueDate.setText(taskDueDate);
 
-            // Repeat the above steps for other data (taskTitle, taskDescription, taskDueDate)
         }
         editTaskDueDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
                 builder.setTitleText("Select Due Date");
-
-                // Set the date range if needed
-                // builder.setSelection(MaterialDatePicker.todayInUtcMilliseconds());
 
                 MaterialDatePicker<Long> picker = builder.build();
                 picker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
@@ -68,7 +62,6 @@ public class Taskdetailspage extends AppCompatActivity {
                         Calendar calendar = Calendar.getInstance();
                         calendar.setTimeInMillis(selection);
 
-                        // Format the selected date and set it to the edit text
                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
                         String formattedDate = sdf.format(calendar.getTime());
                         editTaskDueDate.setText(formattedDate);
@@ -80,40 +73,37 @@ public class Taskdetailspage extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get updated task details
+                
                 String updatedTitle = editTaskTitle.getText().toString();
                 String updatedDescription = editTaskDescription.getText().toString();
                 String updatedDueDate = editTaskDueDate.getText().toString();
 
-                // Check if any field is empty
+
                 if (updatedTitle.isEmpty() || updatedDescription.isEmpty() || updatedDueDate.isEmpty()) {
                     Toast.makeText(Taskdetailspage.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-                    return; // Return early to avoid further execution
+                    return; 
                 }
 
-                // Ensure databaseHelperclass is not null
+
                 if (databaseHelperclass == null) {
                     Toast.makeText(Taskdetailspage.this, "Database helper is not initialized", Toast.LENGTH_SHORT).show();
-                    return; // Return early to avoid further execution
+                    return; 
                 }
 
-                // Ensure taskId is not null
+
                 if (taskId == null) {
                     Toast.makeText(Taskdetailspage.this, "Task ID is null", Toast.LENGTH_SHORT).show();
-                    return; // Return early to avoid further execution
+                    return; 
                 }
 
-                // Update the task details in the database
                 boolean isUpdated = databaseHelperclass.updatedata(taskId, updatedTitle, updatedDescription, updatedDueDate);
 
-                // Check if the update was successful
                 if (isUpdated) {
-                    // Notify the user and return to MainActivity
+
                     Toast.makeText(Taskdetailspage.this, "Task updated successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Taskdetailspage.this, MainActivity.class);
                     startActivity(intent);
                 } else {
-                    // Notify the user if the update failed
                     Toast.makeText(Taskdetailspage.this, "Failed to update task", Toast.LENGTH_SHORT).show();
                 }
             }
