@@ -5,11 +5,13 @@
     android:id="@+id/nestedrecycler"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#DCF0FB"
     tools:context=".NewMainPage">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#DCF0FB">
 
         <TextView
             android:id="@+id/relatednews"
@@ -19,6 +21,7 @@
             android:text="News"
             android:textSize="24dp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topnews_recycler" />
 
@@ -29,13 +32,14 @@
             android:text="Top News"
             android:textSize="24dp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"></TextView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/topnews_recycler"
             android:layout_width="0dp"
-            android:layout_height="195dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
